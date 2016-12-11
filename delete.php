@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>PHP Databases and PDO</title>
+	<title>Delete Films</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 </head> 
 <body>
@@ -10,7 +10,7 @@
 	<li><a href="insert-form.php">Add a new film</a></li>
 	<li><a href="delete-form.php">Delete films</a></li>
 </ul>
-<h1>Delete Students</h1>
+<h1>Delete Films</h1>
 <?php
 require_once("film-model.php");
 

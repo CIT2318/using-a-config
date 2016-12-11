@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Insert Form</title>
+	<title>Add New Film</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 </head>
 <body>

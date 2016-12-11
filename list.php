@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>PHP, PDO, Databases</title>
+<title>View All Films</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 </head>
 <body>
