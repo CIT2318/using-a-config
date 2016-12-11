@@ -11,30 +11,17 @@
 	<li><a href="delete-form.php">Delete films</a></li>
 </ul>
 <h1>Add new film</h1>
-
 <?php
-try{
-    $conn = new PDO('mysql:host=localhost;dbname=u0123456', 'u0123456', '01jan96');
-}
-catch (PDOException $exception) 
-{
-	echo "Oh no, there was a problem" . $exception->getMessage();
-}
+require_once("film-model.php");
 
 //do some form validation
 $title=$_POST['title'];
 $year=$_POST['year'];
 $duration=$_POST['duration'];
 
-$query="INSERT INTO films (id, title, year, duration)
-VALUES (NULL, :title, :year, :duration)";
-$stmt=$conn->prepare($query);
-$stmt->bindValue(':title', $title);
-$stmt->bindValue(':year', $year);
-$stmt->bindValue(':duration', $duration);
-$affected_rows = $stmt->execute();
+$success = insertFilm($title, $year, $duration);
 
-if($affected_rows==1){
+if($success==1){
 	echo "<p>Successfully added the details for ".$title."</p>";
 }else{
 	echo "<p>There was a problem inserting the data.</p>";

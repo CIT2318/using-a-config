@@ -11,17 +11,11 @@
 	<li><a href="delete-form.php">Delete films</a></li>
 </ul>
 <?php
-try{
-       $conn = new PDO('mysql:host=localhost;dbname=u0123456', 'u0123456', '01jan96');
-}
-catch (PDOException $exception) 
-{
-	echo "Oh no, there was a problem" . $exception->getMessage();
-}
-$query = "SELECT * FROM films";
-$resultset = $conn->query($query);
 
-while ($film = $resultset->fetch()) {
+require_once("film-model.php");
+$films=getAllFilms();
+
+foreach($films as $film){
     echo "<p>";
     echo "<a href='details.php?id=".$film['id']."'>";
     echo $film["title"];

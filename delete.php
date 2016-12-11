@@ -12,6 +12,8 @@
 </ul>
 <h1>Delete Students</h1>
 <?php
+require_once("film-model.php");
+
 
 try{
        $conn = new PDO('mysql:host=localhost;dbname=u0123456', 'u0123456', '01jan96');
@@ -23,16 +25,12 @@ catch (PDOException $exception)
 
 
 $filmIds=$_POST['films'];
-$query="DELETE FROM films WHERE id=:filmId";
-$stmt=$conn->prepare($query);
-$affected_rows=0;
+$affected_rows = 0;
 foreach($filmIds as $filmId)
 {
-	$stmt->bindValue(':filmId',$filmId);
-	$affected_rows += $stmt->execute();	
+	$affected_rows += deleteFilm($filmId);
 }
 echo "<p>Deleted ".$affected_rows." films</p>";
-$conn=NULL;
 
 
 ?>

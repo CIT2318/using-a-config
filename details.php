@@ -11,23 +11,11 @@
 	<li><a href="delete-form.php">Delete films</a></li>
 </ul>
 <?php
-try{
-       $conn = new PDO('mysql:host=localhost;dbname=u0123456', 'u0123456', '01jan96');
-}
-catch (PDOException $exception) 
-{
-	echo "Oh no, there was a problem" . $exception->getMessage();
-}
-
-
+require_once("film-model.php");
 $filmId=$_GET['id'];
+$film=getFilmById($filmId);
 
-
-$stmt = $conn->prepare("SELECT * FROM films WHERE films.id = :id");
-$stmt->bindValue(':id',$filmId);
-$stmt->execute();
-
-if($film=$stmt->fetch()){
+if($film){
 	echo "<h1>".$film['title']."</h1>";
 	echo "<ul>";
 	echo "<li>Year: ".$film['year']."</li>";
