@@ -1,5 +1,5 @@
 <?php
-require_once("film-model.php");
+require_once("models/film-model.php");
 
 //do some form validation
 $title=$_POST['title'];
