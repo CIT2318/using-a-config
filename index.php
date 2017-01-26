@@ -1,10 +1,8 @@
 
 <?php
-use \SimpleFilmApp\FilmController;
-require_once("models/film-model.php");
-require_once("controllers/filmcontroller.php");
 
-$filmController=new FilmController();
+require_once("models/film-model.php");
+
 
 if(isset($_GET["action"])){
     $action=$_GET['action'];
@@ -14,9 +12,13 @@ if(isset($_GET["action"])){
 
 
 if ($action==="list") {
-	$filmController->listFilms();
+	$films=getAllFilms();
+	$pageTitle="List all films";
+	include("views/list-view.php");
 } else if ($action==="details" && isset($_GET['id'])) {
-	$filmController->details($_GET['id']);
+	$film=getFilmById($_GET['id']);
+	$pageTitle="Film details";
+	include("views/details-view.php");
 } else {
     include("views/404-view.php");
 }
