@@ -1,9 +1,8 @@
 <?php
 
 function getConnection(){
-	$dbSettings = \FrontController\Config::get('database');
 	try{
-		$conn = new PDO("mysql:host=" .$dbSettings['host']. ";dbname=" .$dbSettings['dbname'], $dbSettings['username'], $dbSettings['password']);
+       $conn = new PDO("mysql:host=localhost;dbname=u0123456", "u0123456", "01jan96");
 	}
 	catch (PDOException $exception) 
 	{
