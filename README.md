@@ -1,10 +1,9 @@
 #Using a Config File
 
-It is considered good practice to store all configuration information e.g. username and password for database access in a configuration or config file. 
+It is considered good practice to store all configuration information (e.g. username and password for database access) in a configuration or config file. 
+ Then we can make simple to our applications (move to a different server, switch to a different database) without having to sift through PHP code. 
 
-Then we can make simple changes to our applications without having to sift through PHP code. 
-
-Create a new folder, name it config. Create a new PHP file, save it in the config folder and name it config.php. Add the following to config.php (change the settings to match your database).
+Create a new folder, name it *config*. Create a new PHP file, save it in the config folder and name it *config.php*. Add the following to *config.php* (change the settings to match your database).
 
 ```
 return [
@@ -30,7 +29,7 @@ $viewPath = $config["view-path"];
 echo $viewPath;
 ```
 
-Put index.php on a web server. Check this works.
+Put *index.php* on a web server. Check this works.
 
 * Add another echo statement to output the name of your database
 
@@ -38,7 +37,7 @@ Put index.php on a web server. Check this works.
 
 To make the config info accessible to all parts of out application we will use a config class.
 
-Create the following class, save it as Config.php in the root folder of the application.
+Create the following class, save it as *Config.php* in the root folder of the application.
 
 ```
 namespace ConfigExample;
@@ -57,18 +56,17 @@ class Config {
 
 ```
 
-Now change index.php so that it uses the Config class instead of loading the config data directly. 
+Now change *index.php* so that it uses the Config class instead of loading the config data directly. 
 
 ```
 use ConfigExample\Config;
 
 require_once("Config.php");
-require_once("models/film-model.php");
-
 Config::setConfig("config/config.php");
-
 $viewPath=Config::get("view-path");
 echo $viewPath;
+
+require_once("models/film-model.php");
 
 if(isset($_GET["action"])){
     $action=$_GET['action'];
@@ -88,3 +86,6 @@ if ($action==="list") {
     include("views/404-view.php");
 }
 ```
+
+* Modify the include statements so they use the view path from the config file
+* Open film-model.php. Modify getConnection() function so that it uses the Config class to retrieve the database settings. 
