@@ -1,5 +1,5 @@
 <?php
-namespace FrontController;
+namespace ConfigExample;
 
 class Config {
     private static $config = [];

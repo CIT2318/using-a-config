@@ -1,6 +1,6 @@
 
 <?php
-use FrontController\Config;
+use ConfigExample\Config;
 
 require_once("config.php");
 
@@ -9,6 +9,7 @@ Config::setConfig("config/config.php");
 $database = Config::get("database");
 $viewPath=Config::get("view-path");
 echo $database["username"];
+
 require_once("models/film-model.php");
 
 

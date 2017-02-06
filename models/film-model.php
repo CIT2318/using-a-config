@@ -1,7 +1,7 @@
 <?php
 
 function getConnection(){
-	$dbSettings = \FrontController\Config::get('database');
+	$dbSettings = \ConfigExample\Config::get('database');
 	try{
 		$conn = new PDO("mysql:host=" .$dbSettings['host']. ";dbname=" .$dbSettings['dbname'], $dbSettings['username'], $dbSettings['password']);
 	}
