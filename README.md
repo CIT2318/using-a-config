@@ -1,7 +1,7 @@
 #Using a Config File
 
 It is considered good practice to store all configuration information (e.g. username and password for database access) in a configuration or config file. 
- Then we can make simple to our applications (move to a different server, switch to a different database) without having to sift through PHP code. 
+ Then we can make simple changes to our applications (move to a different server, switch to a different database) without having to sift through PHP code. 
 
 Create a new folder, name it *config*. Create a new PHP file, save it in the config folder and name it *config.php*. Add the following to *config.php* (change the settings to match your database).
 
@@ -61,6 +61,7 @@ Now change *index.php* so that it uses the Config class instead of loading the c
 ```
 use ConfigExample\Config;
 
+//these four lines are the new ones
 require_once("Config.php");
 Config::setConfig("config/config.php");
 $viewPath=Config::get("view-path");
